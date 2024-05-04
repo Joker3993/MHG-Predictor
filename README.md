@@ -29,7 +29,7 @@ This command will trigger the processes as defined in the main_2.py script for `
 ## Loading Saved Model and Testing on Test Set
 To load a saved model and test it on the test set, run (example for event log `bpi13_closed_problems`):
 
-python metrics.py 
+	python metrics.py 
 
 ## Tools
 pytorch: Used for deep learning operations.
