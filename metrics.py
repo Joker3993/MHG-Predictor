@@ -152,14 +152,14 @@ if __name__ == '__main__':
 
                     'bpi13_closed_problems',
                     # 'bpi12_all_complete',
-                     'bpi12w_complete',
+                    #  'bpi12w_complete',
                     #  'bpi13_incidents',
-                     'bpi13_problems',
-                     'bpic2017_o',
+                    #  'bpi13_problems',
+                    #  'bpic2017_o',
                     #  'bpic2020',
-                     'helpdesk',
+                    #  'helpdesk',
                     #  'receipt',
-                     'bpi12_work_all'
+                    #  'bpi12_work_all'
     ]
 
     for eventlog in tqdm(list_eventlog):
