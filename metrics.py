@@ -9,7 +9,7 @@ from sklearn.preprocessing import LabelBinarizer
 from torch import nn
 from tqdm import tqdm
 
-from DGLDataset import MyDataset
+from Dataset import MyDataset
 
 def get_device(gpu):
     """
