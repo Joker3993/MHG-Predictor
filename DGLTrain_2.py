@@ -1,4 +1,5 @@
 import argparse
+import collections
 import copy
 import os
 import pickle
@@ -7,12 +8,14 @@ import random
 import numpy as np
 import torch
 from dgl.dataloading import GraphDataLoader
+from sklearn.utils import compute_class_weight, compute_sample_weight
 from torch import nn, optim
 import matplotlib.pyplot as plt
 from DGLDataset import MyDataset
 import warnings
 
 from Hetro_Homo import SAGE_Classifier
+
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -37,7 +40,9 @@ class Tran:
         else:
             return torch.device('cpu')
 
-    def train(self,model, train_loader, loss_func, optimizer, device, data_length, total_train_step ):
+
+
+    def train(self,model, train_loader, loss_func, optimizer, device, data_length, total_train_step):
         """
         训练神经网络模型。
 
@@ -245,14 +250,19 @@ class Tran:
         print(f"lr: {args.lr}")
         print(f"batch_size: {args.batch_size}")
         print(f"gpu: {args.gpu}")
-        print(f"num_heads: {args.num_heads}")
-        print(f"weight_decay:{args.weight_decay}")
+
+
 
         for fold in range(3):
 
-            np.random.seed(10)
-            random.seed(10)
-            torch.manual_seed(10)  # 设置 PyTorch 的随机种子
+            # np.random.seed(10)
+            # # np.random.seed(100)#改这个似乎没有用的
+            #
+            # random.seed(10)
+            # # random.seed(100)#这个似乎也是没用的
+            #
+            # torch.manual_seed(10)  # 设置 PyTorch 的随机种子
+
 
             self._fold = fold
 
@@ -279,7 +289,7 @@ class Tran:
             vocab_sizes = [np.load("raw_dir/" + args.dataset +"_" + str(self._fold) + "/" + node_name + "_info.npy", allow_pickle=True) for node_name in
                            node_name]
 
-            model = SAGE_Classifier(args.hidden_dim,args.n_classes,args.num_heads,args.num_layers,node_name=node_name,vocab_sizes=vocab_sizes,rel_names=rel_name)
+            model = SAGE_Classifier(args.hidden_dim,args.n_classes,args.num_layers,node_name=node_name,vocab_sizes=vocab_sizes,rel_names=rel_name)
 
             # 创建 dataloaders
             train_loader = GraphDataLoader(dataset_train, batch_size=args.batch_size, shuffle=True)
@@ -306,10 +316,12 @@ class Tran:
 
             model.to(device)
 
-            # 定义损失函数和优化器
 
+            # 定义损失函数和优化器
             loss_func = nn.CrossEntropyLoss()
-            optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+            # optimizer = optim.Adam(model.parameters(), lr=args.lr)
+            optimizer = optim.NAdam(model.parameters(), lr=args.lr)
+
 
 
             patience = 10
@@ -378,10 +390,7 @@ class Tran:
             print('Training finished.')
 
 
-
-
     def tran_main(self):
-
 
         class_num = np.load("raw_dir/" + self._evenlog + "_" + str(self._fold) + "/" + "activity" + "_info.npy",allow_pickle=True)
 
@@ -406,7 +415,7 @@ class Tran:
         # 添加命令行参数，用于指定训练的轮数，默认为 20
         parser.add_argument("--num-epochs", type=int, default=30, help="number of epoch")
 
-        # 添加命令行参数，用于指定学习率，默认为 0.001
+        # 添加命令行参数，用于指定学习率，默认为 0.0005
         parser.add_argument("--lr", type=float, default=0.0005, help="learning rate")
 
         # 添加命令行参数，用于指定每个训练批次的样本数，默认为 16
@@ -415,13 +424,13 @@ class Tran:
         # 添加命令行参数，用于指定使用的GPU序号，默认为 0
         parser.add_argument("--gpu", type=int, default=0, help="gpu")
 
-        parser.add_argument("--num_heads", type=int, default=8, help="num_heads")
 
-        parser.add_argument("--weight_decay", type=int, default=0, help="weight_decay")
+
         # 解析命令行参数，并将其存储在 args 对象中
         args = parser.parse_args()
 
         # 调用 train_val 函数，并传入解析后的命令行参数 args 进行模型训练
         self.train_val(args)
+
 
 
