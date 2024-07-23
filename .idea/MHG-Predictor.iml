@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
-    <orderEntry type="inheritedJdk" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/GCN-ProcessPrediction" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MiDA" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MiTFM" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PREMIERE" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bigdgcnn-main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/processtransformer" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="tuduipytorch" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
