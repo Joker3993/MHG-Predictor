@@ -6,8 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/MiDA" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MiTFM" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/PREMIERE" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/bigdgcnn-main" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/processtransformer" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Bigdgcnn-Multidgcnn" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="tuduipytorch" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

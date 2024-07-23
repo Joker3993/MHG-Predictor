@@ -71,8 +71,7 @@ if __name__ == "__main__":
             target_train = pm.get_label(train.groupby('case', sort=False).agg({'activity': lambda x: list(x)}))
             target_test = pm.get_label(test.groupby('case', sort=False).agg({'activity': lambda x: list(x)}))
 
-            print("训练集标签：\n", target_train)
-            print("测试集标签：\n", target_test)
+
 
             premiere_feature_train = pm.premiere_feature(dict_view_train, flow_act, agg_time_train, target_train,
                                                          dict_card)

@@ -17,6 +17,3 @@ if __name__ == "__main__":
     eventlog = "bpi12_work_all"
     get_log = ReadLog(eventlog).readView()
     MiDA(eventlog).smac_opt()
-
-"""bpi13_problems , receipt ,bpic2020 , bpi12w_complete, bpic2017_o ,bpi13_incidents, bpi12_all_complete（4天左右）,bpi12_work_all（5天以上,具体未知）
-    helpdesk,"""

@@ -23,10 +23,7 @@ class ReadLog:
         return sec / 86400
 
     def time_format(self, time_stamp):
-        '''
-        :param time_stamp: oggetto timestamp
-        :return: converte l'oggetto timestamp utile in fase di calcolo dei tempi
-        '''
+
         try:
             date_format_str = '%Y/%m/%d %H:%M:%S'
             conversion = datetime.strptime(time_stamp, date_format_str)  

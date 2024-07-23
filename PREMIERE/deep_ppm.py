@@ -117,8 +117,6 @@ if __name__ == "__main__":
 
     for fold in range(3):
 
-        """处理数据就用pre环境跑，训练用SMAC环境。"""
-
         output_file = namedataset
 
         current_time = time.strftime("%d.%m.%y-%H.%M", time.localtime())
@@ -188,8 +186,6 @@ if __name__ == "__main__":
         best_numparameters = 0
 
         trials = Trials()
-
-        """应该要修改，一直报错没有什么属性"""
 
         "把随机种子的产生方式修改了一下"
         best = fmin(fit_and_score, space, algo=tpe.suggest, max_evals=n_iter, trials=trials,

@@ -71,7 +71,7 @@ class PREMIERE:
 
         return log
 
-    """这里很关键，原来的代码部分"""
+
 
     def generate_prefix_trace(self, log):
         grouped = log.groupby("case")
@@ -79,7 +79,7 @@ class PREMIERE:
         start_timestamps = start_timestamps.sort_values("timestamp", ascending=True, kind="mergesort")
         train_ids = list(start_timestamps["case"])[:int(0.66 * len(start_timestamps))]
 
-        """这里的训练集、测试集排序是根据时间戳全局的排序，不管是不是同一个案例。所有事件按照时间戳从小到排"""
+
         train = log[log["case"].isin(train_ids)].sort_values("timestamp", ascending=True, kind='mergesort')
         test = log[~log["case"].isin(train_ids)].sort_values("timestamp", ascending=True, kind='mergesort')
 
