@@ -80,8 +80,6 @@ class Whole_Graph:
 
         for col in edges_raw.columns.tolist():
 
-            """根据名为"case"的列在名为edges_raw的DataFrame上进行分组。
-            然后，它应用了agg函数来对每个组中的值进行聚合。聚合函数使用了一个lambda函数，将指定列（col）中的每个组的值转换为一个列表。"""
             sequence = edges_raw.groupby("case", sort=False).agg({col: lambda x: list(x)})
 
             if col == "node_col":
@@ -106,7 +104,6 @@ class Whole_Graph:
 
         train_df['node_col'] = range(len(train_df))
 
-        """案例列需要再次整数编码"""
         col = 'case'
 
         att_encode_map = encode_map(set(train_df[col].values))
@@ -116,7 +113,7 @@ class Whole_Graph:
         event_list = [0] * len(train_df['case'].unique().tolist())
 
         self.save_edges(train_df, type)
-        """多层异构图的创建,活动层的同构关系还没有加进去"""
+
         dict_heterograph = {
             ('case', 'CaseToLog', 'eventlog'): (train_df['case'].unique().tolist(), event_list),
             ('activity', 'ActivityToCase', 'case'): (train_df['node_col'].tolist(), train_df['case'].tolist()),
@@ -251,7 +248,7 @@ class Whole_Graph:
             with open("raw_dir/" + self._eventlog + "_" + str(self._fold) + "/" + 'feature' + '_' + "list" + ".npy",
                       'wb') as file:
                 pickle.dump(feature_list, file)
-            """单独操作一下，持续时间节点的特征"""
+
             train_df['node_col'] = range(len(train_df))
             val_df['node_col'] = range(len(val_df))
             test_df['node_col'] = range(len(test_df))
