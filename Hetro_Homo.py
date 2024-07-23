@@ -75,7 +75,7 @@ class HomoLayer(nn.Module):
 
 
 class SAGE_Classifier(nn.Module):
-    def __init__(self, hidden_dim, n_classes, num_heads, num_layers, rel_names, vocab_sizes, node_name):
+    def __init__(self, hidden_dim, n_classes, num_layers, rel_names, vocab_sizes, node_name):
         super(SAGE_Classifier, self).__init__()
         self.embedding_layers = nn.ModuleList([
             nn.Embedding(voca_size, hidden_dim) for voca_size in vocab_sizes

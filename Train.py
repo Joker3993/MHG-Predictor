@@ -107,8 +107,7 @@ class Tran:
                 node_name = pickle.load(file)
             vocab_sizes = [np.load("raw_dir/" + args.dataset + "_" + str(self._fold) + "/" + node_name + "_info.npy",
                                    allow_pickle=True) for node_name in node_name]
-            model = SAGE_Classifier(args.hidden_dim, args.n_classes, args.num_layers, node_name=node_name,
-                                    vocab_sizes=vocab_sizes, rel_names=rel_name)
+            model = SAGE_Classifier(args.hidden_dim, args.n_classes, args.num_layers, node_name=node_name,vocab_sizes=vocab_sizes, rel_names=rel_name)
             train_loader = GraphDataLoader(dataset_train, batch_size=args.batch_size, shuffle=True)
             val_loader = GraphDataLoader(dataset_val, batch_size=args.batch_size, shuffle=True)
             test_loader = GraphDataLoader(dataset_test, batch_size=args.batch_size, shuffle=True)
