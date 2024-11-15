@@ -100,9 +100,9 @@ def Final_test(args):
 if __name__ == '__main__':
     list_eventlog = [
         # 'bpi13_closed_problems',
-        'bpi12w_complete',
+        # 'bpi12w_complete',
         # 'bpi13_problems',
-        # 'bpic2017_o',
+        'bpic2017_o',
         # 'helpdesk',
         # 'bpi12_work_all'
     ]

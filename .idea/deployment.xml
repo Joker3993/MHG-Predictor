@@ -94,13 +94,6 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="yyf@10.12.54.43:22 password">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/yyf/MHG_Temp" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
     </serverData>
     <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
   </component>
