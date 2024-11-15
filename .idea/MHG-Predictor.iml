@@ -9,7 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/processtransformer" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Bigdgcnn-Multidgcnn" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="tuduipytorch" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="GNN_Project_3" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

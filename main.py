@@ -6,8 +6,8 @@ if __name__ == "__main__":
     list_eventlog = [
         # 'helpdesk',
         # 'bpi13_problems',
-        'bpi13_closed_problems',
-        # 'bpi12w_complete',
+        # 'bpi13_closed_problems',
+        'bpi12w_complete',
         # 'bpic2017_o',
         # 'bpi12_work_all',
     ]

@@ -10,9 +10,9 @@ import dgl
 from dgl.nn.pytorch import GATConv, GraphConv, GATv2Conv, SAGEConv, GatedGraphConv
 
 
-class HeteroAttentionLayer(nn.Module):
+class HeteroLayer(nn.Module):
     def __init__(self, in_size, out_size, rel_names, node_name):
-        super(HeteroAttentionLayer, self).__init__()
+        super(HeteroLayer, self).__init__()
         self.node_name = node_name
         self.conv1 = dglnn.HeteroGraphConv({
             rel: SAGEConv(in_feats=in_size, out_feats=out_size, aggregator_type="lstm", feat_drop=0.3)
@@ -81,8 +81,8 @@ class SAGE_Classifier(nn.Module):
             nn.Embedding(voca_size, hidden_dim) for voca_size in vocab_sizes
         ])
         self.node_name = node_name
-        self.HeteroAttentionLayer = nn.ModuleList(
-            [HeteroAttentionLayer(hidden_dim, hidden_dim, rel_names, node_name) for _ in range(num_layers)])
+        self.HeteroLayer = nn.ModuleList(
+            [HeteroLayer(hidden_dim, hidden_dim, rel_names, node_name) for _ in range(num_layers)])
         self.norm1 = nn.ModuleDict({node_name: nn.LayerNorm(hidden_dim) for node_name in node_name})
         self.homoLayer = nn.ModuleList(
             [HomoLayer(hidden_dim) for _ in range(1)])
@@ -152,7 +152,7 @@ class SAGE_Classifier(nn.Module):
 
         hg_list = []
         h_gat = h
-        for hetroLayer in self.HeteroAttentionLayer:
+        for hetroLayer in self.HeteroLayer:
             h_gat = hetroLayer(g, h_gat)
         with g.local_scope():
             g.ndata['h'] = h_gat

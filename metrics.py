@@ -99,15 +99,11 @@ def Final_test(args):
 
 if __name__ == '__main__':
     list_eventlog = [
-        'bpi13_closed_problems',
-        # 'bpi12_all_complete',
-        # 'bpi12w_complete',
-        # 'bpi13_incidents',
+        # 'bpi13_closed_problems',
+        'bpi12w_complete',
         # 'bpi13_problems',
         # 'bpic2017_o',
-        # 'bpic2020',
         # 'helpdesk',
-        # 'receipt',
         # 'bpi12_work_all'
     ]
     for eventlog in tqdm(list_eventlog):
@@ -117,6 +113,6 @@ if __name__ == '__main__':
         parser.add_argument("--num-layers", type=int, default=2, help="number of layer")
         parser.add_argument("--lr", type=float, default=0.0005, help="learning rate")
         parser.add_argument("--batch-size", type=int, default=32, help="batch size")
-        parser.add_argument("--gpu", type=int, default=3, help="gpu")
+        parser.add_argument("--gpu", type=int, default=0, help="gpu")
         args = parser.parse_args()
         Final_test(args)

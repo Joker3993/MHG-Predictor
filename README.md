@@ -16,7 +16,7 @@ All preprocessing of event logs and training of models are consolidated into a s
 
 #### Selecting a Dataset
 
-You can specify the dataset within the `main.py` script. As an example, the `bpi13_closed_problems` event log dataset can be selected for testing.
+You can specify the dataset within the `main.py` script. As an example, the `bpi12w_complete` event log dataset can be selected for testing.
 
 #### Running the Script
 
@@ -24,10 +24,10 @@ To run the preprocessing and model training on your chosen dataset, execute the 
 
 	python main.py
 
-This command will trigger the processes as defined in the main.py script for `bpi13_closed_problems` event log.
+This command will trigger the processes as defined in the main.py script for `bpi12w_complete` event log.
 
 ## Loading Saved Model and Testing on Test Set
-To load a saved model and test it on the test set, run (example for event log `bpi13_closed_problems`):
+To load a saved model and test it on the test set, run (example for event log `bpi12w_complete`):
 
 	python metrics.py 
 
