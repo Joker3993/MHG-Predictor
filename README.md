@@ -1,4 +1,6 @@
 # MHG-Predictor
+MHG-Predictor: A Multi-Layer Heterogeneous Graph-based Predictor for Next Activity in Complex Business Processes
+https://dl.acm.org/doi/10.1145/3701716.3715248
 
 ## Usage
 
